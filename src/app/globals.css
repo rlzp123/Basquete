@@ -1,0 +1,78 @@
+@import "tailwindcss";
+
+@theme {
+  --color-brand: #5451d9;
+  --color-brand-dark: #423fb8;
+  --color-brand-light: #7b79e6;
+  --color-ink: #0a0a0c;
+  --color-panel: #121216;
+  --color-panel-2: #1a1a20;
+  --font-sans: "Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --animate-slide-up: slide-up 0.35s cubic-bezier(0.22, 1, 0.36, 1) both;
+  --animate-fade-in: fade-in 0.6s ease-out both;
+  --animate-rise: rise 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
+  --animate-pulse-dot: pulse-dot 1.4s ease-in-out infinite;
+  --animate-marquee: marquee 30s linear infinite;
+
+  @keyframes slide-up {
+    from { opacity: 0; transform: translateY(12px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes fade-in {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+  @keyframes rise {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes pulse-dot {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.4; transform: scale(0.75); }
+  }
+  @keyframes marquee {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+  }
+}
+
+
+html { scroll-behavior: smooth; }
+
+body {
+  background-color: var(--color-ink);
+  color: #f4f4f5;
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection { background: var(--color-brand); color: white; }
+
+.container-x { @apply mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8; }
+
+.btn { @apply inline-flex items-center justify-center gap-2 rounded-lg px-5 py-3 text-sm font-semibold tracking-wide transition-all duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand/60 disabled:cursor-not-allowed disabled:opacity-50; }
+.btn-primary { @apply inline-flex items-center justify-center gap-2 rounded-lg px-5 py-3 text-sm font-semibold tracking-wide transition-all duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand/60 disabled:cursor-not-allowed disabled:opacity-50 bg-brand text-white shadow-[0_8px_30px_-8px_rgba(84,81,217,0.7)] hover:-translate-y-0.5 hover:bg-brand-light active:translate-y-0; }
+.btn-ghost { @apply inline-flex items-center justify-center gap-2 rounded-lg px-5 py-3 text-sm font-semibold tracking-wide transition-all duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand/60 disabled:cursor-not-allowed disabled:opacity-50 border border-white/15 bg-white/5 text-white backdrop-blur hover:border-white/30 hover:bg-white/10; }
+.btn-dark { @apply inline-flex items-center justify-center gap-2 rounded-lg px-5 py-3 text-sm font-semibold tracking-wide transition-all duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand/60 disabled:cursor-not-allowed disabled:opacity-50 bg-white text-zinc-950 hover:bg-zinc-200; }
+
+.card { @apply rounded-2xl border border-white/8 bg-panel transition-all duration-300; }
+.card-hover { @apply hover:-translate-y-1 hover:border-brand/40 hover:shadow-[0_20px_50px_-20px_rgba(84,81,217,0.45)]; }
+
+.chip { @apply inline-flex items-center rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs font-medium text-zinc-300 transition-colors hover:border-brand/50 hover:text-white; }
+.chip-active { @apply border-brand bg-brand text-white hover:border-brand; }
+
+.input { @apply w-full rounded-lg border border-white/10 bg-white/5 px-4 py-3 text-sm text-white placeholder:text-zinc-500 outline-none transition focus:border-brand focus:bg-white/8 focus:ring-2 focus:ring-brand/30; }
+
+.eyebrow { @apply text-xs font-semibold uppercase tracking-[0.2em] text-brand-light; }
+.h-section { @apply text-3xl font-extrabold tracking-tight text-white sm:text-4xl; }
+
+.court-lines {
+  background-image:
+    linear-gradient(rgba(255,255,255,0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.035) 1px, transparent 1px);
+  background-size: 48px 48px;
+}
+
+.scrollbar-none::-webkit-scrollbar { display: none; }
+.scrollbar-none { scrollbar-width: none; }
+
+.prose-bb p { @apply mb-5 text-base leading-relaxed text-zinc-300; }
